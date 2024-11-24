@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getCategories } from "../controllers/category.controller";
+import { addCategoryController, getCategories } from "../controllers/category.controller";
 
 
 const router = Router();
@@ -7,7 +7,7 @@ const router = Router();
 
 router.get('/', getCategories);
 router.get('/xyz/abc', getCategories);
-// router.post('/', addCategory);
+router.post('/', addCategoryController);
 
 
 export default router;
