@@ -28,3 +28,32 @@ export async function getCategoryBySlug(slug: string) {
     });
     return category;
 }
+
+export async function updateCategory(name:string, slug: string, id: number) {
+    const category = await Category.findByPk(id)
+    if(!category) {
+        throw new Error('Category not found');
+    }
+    
+    if(name) category.name = name;
+    if(slug) category.slug = slug;
+    await category.save();
+
+    return category;
+
+}
+
+export async function getCategoryById(id: number) {
+    const category = await Category.findByPk(id)
+    return category;
+}
+
+export async function deleteCategory(id: number) {
+    const category = await Category.findByPk(id);
+
+    if(!category) {
+        throw new Error('Category not found')
+    }
+    await category.destroy();
+    return category;
+}
