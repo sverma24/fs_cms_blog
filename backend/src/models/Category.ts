@@ -1,5 +1,6 @@
-import { BelongsTo, Column, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsTo, HasMany, Column, ForeignKey, Model, Table } from "sequelize-typescript";
 import { User } from './User';
+import { Post } from "./Post";
 
 @Table
 export class Category extends Model<Category>{
@@ -24,4 +25,7 @@ export class Category extends Model<Category>{
 
     @BelongsTo(()=>User)
     user?: User;
+
+    @HasMany(()=>Post)
+    posts: Post[] = []
 }
