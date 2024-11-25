@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { addCategory, deleteCategory, getAllCategories, getCategoryById, getCategoryBySlug, updateCategory } from "../services/category.service";
 import { generateSlug } from "../shared/general.util";
 
-export const getCategories = async (req: Request, res: Response) =>{
+export const getCategories = async (req: Request, res: Response) => {
 
     const categories = await getAllCategories();
 
@@ -10,6 +10,7 @@ export const getCategories = async (req: Request, res: Response) =>{
 }
 
 export const addCategoryController = async (req: Request, res: Response) => {
+
     const {name} = req.body;
     const userId = 1;
     let slug = generateSlug(name);
